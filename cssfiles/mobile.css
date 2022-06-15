@@ -1,0 +1,118 @@
+@media only screen and (max-device-width: 1000px) {
+
+    .main--buttons {
+        padding: 2%;
+        position: relative;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #calc_background {
+        width: 40vh;
+        height: 104vh;
+        margin-bottom: 1vh;
+        border-radius: 0px;
+    }
+
+    button {
+        font-size: 2.25vh;
+        width: 100%;
+    }
+
+    .screen {
+        height: 27vh;
+        font-size: 1.9vh;
+        line-height: 2.15vh;
+        width: 35.6vh;
+    }
+
+    #main--screen{
+        font-size: 1.9vh;
+    }
+
+    #math--screen{
+        font-size: 1.9vh;
+    }
+
+    #snd_button {
+        font-size: 2.25vh;
+    }
+
+    #alpha_button {
+        font-size: 2.25vh;
+    }
+
+    #bottom_ti_text {
+        opacity: 0;
+    }
+
+    #game {
+        height: 7vh;
+        position: absolute;
+        font-size: 2.75vh;
+        top: 2vh;
+        z-index: 1;
+    }
+
+    #num {
+        font-size: 3vh;
+    }
+
+    #num_2nd {
+        font-size: 2.25vh;
+    }
+
+    #right_button {
+        font-size: 2.25vh;
+    }
+
+    #top_button {
+        font-size: 1.75vh;
+        margin-bottom: 10%;
+    }
+
+    #alpha_button {
+        font-size: 2.25vh;
+    }
+
+    #up_arrow_button {
+        font-size: 2.25vh;
+    }
+
+    #down_arrow_button {
+        font-size: 2.25vh;
+    }
+
+    #left_arrow_button {
+        font-size: 2.25vh;
+    }
+
+    #right_arrow_button {
+        font-size: 2.25vh;
+    }
+
+    #darkmode--label--id {
+        height: 7vh;
+        margin-bottom: 1vh;
+    }
+
+    .colorswitch--label {
+        height: 7vh;
+        margin-bottom: 1vh;
+    }
+
+    .gamemode--label {
+        height: 7vh;
+        margin-bottom: 1vh;
+    }
+
+    #paint-palette-id {
+        top: 1vh;
+    }
+
+    #settingsbutton {
+        top: 0;
+        right: 0;
+    }
+}

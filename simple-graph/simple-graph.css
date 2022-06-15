@@ -1,0 +1,42 @@
+body {
+    background-color: gray;
+    background-image: url('med-tile.png');
+}
+
+div#control_side {
+    background-color: #996;
+    border: solid black 3px;
+    margin: auto;
+    padding: 16px;
+}
+
+div#control_side>table>tbody>tr>td {
+    background-color: #ffc;
+    border: solid #666 1px;
+    margin: 2px;
+    padding: 8px;
+}
+
+div#image_side {
+    background-color: #663;
+    border: solid black 3px;
+    margin: auto;
+    margin-top: 8px;
+    padding: 16px;
+}
+
+canvas#graph {
+    background-color: white;
+}
+
+div#instruction_side {
+    background-color: #ffc;
+    border: solid black 3px;
+    margin: auto;
+    margin-top: 8px;
+    padding: 16px;
+}
+
+div#instruction_side>dl {
+    margin-left: 5em;
+}

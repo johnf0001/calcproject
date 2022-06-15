@@ -1,0 +1,377 @@
+<html scroll="no" style="overflow: hidden" translate="no" style="width:100%;height:100%;margin:auto;">
+
+<head>
+  <title>Calculator Project</title>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script src="jsfiles/math.js"></script>
+  <script src="jsfiles/graph.js"></script>
+  <script src="jsfiles/operations.js"></script>
+  <script src="jsfiles/dimensions.js"></script>
+  <script src="jsfiles/colorchange.js"></script>
+  <script src="jsfiles/screen.js"></script>
+  <script src="jsfiles/keyboard.js"></script>
+  <script src="jsfiles/mode.js"></script>
+  <script src="jsfiles/list.js"></script>
+  <script src="jsfiles/matrix.js"></script>
+  <script src="jsfiles/game.js"></script>
+  <script src="jsfiles/cursor.js"></script>
+  <script src="jsfiles/data.js"></script>
+  <script src="jsfiles/settings.js"></script>
+
+  <!-- NERDAMER (math library) -->
+  <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/nerdamer.core.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Algebra.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Calculus.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Solve.js"></script>
+
+
+  <!-- edited for graphs; original: ( https://nklein.com/math-scripts/simple-graph/ )-->
+  <link rel="stylesheet" type="text/css" href="simple-graph/simple-graph.css" />
+  <script type="text/javascript" src="simple-graph/simple-graph.js"></script>
+
+  <link rel="stylesheet" href="cssfiles/style.css"/>
+  <link rel="stylesheet" href="cssfiles/settings.css"/>
+  <link rel="stylesheet" href="cssfiles/mobile.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+  <!-- disable zoom -->
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+
+
+  <style media="screen" type="text/css">/*<![CDATA[*/@import 'ti/stylesheet.css';/*]]>*/</style>
+
+</head>
+
+
+<div class="loading">...</div>
+<div onclick="resetData()" id="data">&#10004;</div>
+
+<body>
+  
+<!-- settings button -->
+<div style="position:fixed" onclick="updateFontDisplay();toggleSettings();" id="settingsbutton"><b>S</b></div>
+<!-- settings menu -->
+<div style="position:fixed" id="settingsshell">
+
+  <div class="main--buttons">
+    <input type="checkbox" id="toggle" class="toggle--checkbox"/>
+      <label id="darkmode--label--id" for="toggle" onclick="toggle_screen_color()" class="darkmode--label">
+        <span class="darkmode--label-background"></span>
+      </label>
+    <input type="checkbox" id="colorswitch" class="colorswitch--checkbox"/>
+      <label id="colorchangeid" onclick="change_color()" for="colorswitch" class="colorswitch--label">
+        <span class="colorswitch--label-background"></span>
+        <image id="paint-palette-id" src="image/paint-palette.png"></image>
+      </label>
+    <input type="checkbox" id="gamemode" class="gamemode--checkbox"/>
+    <label id="colorchangeid" onclick="toggle_game()" for="gamemode" class="gamemode--label">
+      <span class="gamemode--label-background"></span>
+      <image id="paint-palette-id" src="image/crown.png"></image>
+    </label>
+  </div>
+
+    <br><br><br>
+  <span style="font-size:1.5vh">MOBILE USE:<br> Create a <u>bookmark</u> on your device!<br>It basically creates an app and will make the calculator function better.</span>
+    <br><br><br>
+  <br>
+  <span id="fontdisplay" style="font-size:2vh;">Edit Font Size ()</span>
+  <div class="font--buttons">
+    <button onclick="increaseFontSize();" style="font-size: 1.25vh; font-family: 'Texas Instruments TI-84 series Regular';">Increase</button>
+    <button onclick="decreaseFontSize();" style="font-size: 1.25vh; font-family: 'Texas Instruments TI-84 series Regular';">Decrease</button>
+    <button onclick="resetFontSize();" style="font-size: 1.25vh; font-family: 'Texas Instruments TI-84 series Regular';">Reset</button>
+  </div>
+
+  <br><br>
+  John Farrell, Greenman '22
+  <br>
+  jsfarrell12@gmail.com
+  <br>
+  <a href="https://www.calcproject.com/sources.html">Sources</a>
+
+</div>
+
+<div class="shell">
+  <div class="outer">
+    <div id="game"></div>
+
+    <div id="calc_background">
+      <div id="top_ti_text">CALC <span style="font-weight:lighter;">Project</span></div>
+
+      <canvas class="screen" id="graph" width="500" height="300">empty</canvas>
+        <form id="simple_graph_gui" method="get" onsubmit="redrawGraph('simple_graph_gui', 'graph');"style='display:none'>
+          <input type="text" name="x-min" value="-10" size="4" />
+          <input type="text" name="x-max" value="10" size="4" />
+          <input type="text" name="y-min" value="-10" size="4" />
+          <input type="text" name="y-max" value="10" size="4" />
+          <input type="text" name="x-inches" value="5.33" size="4" />
+          <input type="text" name="y-inches" value="4.0" size="4" />
+          <input type="text" name="dpi" value="100.0" size="6">
+          <textarea id="function_xyz" name="function" cols="40" rows="10"></textarea>
+          <script> setGridFunc(__tickFunc); </script>
+        </form>
+
+      <div class="screen" id="main--screen"></div>
+      <div class="screen" id="math--screen" style="display:block">
+      </div>
+
+
+      <table id="default">
+        <tr>
+          <td><button class="top--button" id="top_button" style="border-top-left-radius: 1.75vh;border-bottom-left-radius: 1.75vh" type="button" onclick="reset_ind_y();display_y_functions();">y=</button></td>
+          <td><button class="top--button" id="top_button" type="button" onclick="reset_ind_tbl();display_graph_window();">window</button></td>
+          <td><button class="top--button" id="top_button" type="button" onclick="reset_ind_tbl();display_screen('zoom');">zoom</button></td>
+          <td><button class="top--button" id="top_button" type="button" onclick="graph_trace();redrawGraph('simple_graph_gui', 'graph');">trace</button></td>
+          <td><button class="top--button" id="top_button" style="border-top-right-radius: 1.75vh;border-bottom-right-radius: 1.75vh" type="button" onclick="updateGraphDimensions();redrawGraph('simple_graph_gui', 'graph');redrawGraph('simple_graph_gui','graph');">graph</button></td>
+        </tr>
+        <tr>
+          <td><button id="snd_button" type="button" onclick="toggle_2nd()">2nd</button></td>
+          <td><button id="button" type="button" onclick="display_screen('mode');">mode</button></td>
+          <td><button id="button" type="button" onclick="backspace();">del</button></td>
+          <td><button id="up_arrow_button" type="button" onclick="arrow_up()">&#9650;</button></td>
+          <td><button id="right_arrow_button" type="button" onclick="arrow_right()">&#x25BA;</button></td>
+        </tr>
+        <tr>
+          <td><button id="alpha_button" type="button" onclick="toggle_alpha()">alpha</button></td>
+          <td><button id="button" type="button" onclick="input('x')">X,T,n</button></td>
+          <td><button id="button" type="button" onclick="display_screen('stat');">stat</button></td>
+          <td><button id="left_arrow_button" type="button" onclick="arrow_left()">&#x25C4;</button></td>
+          <td><button id="down_arrow_button" type="button" onclick="arrow_down()">&#9660;</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="display_screen('math');">math</button></td>
+          <td><button id="button" type="button" onclick="display_screen('apps');">apps</button></td>
+          <td><button id="button" type="button" onclick="display_screen('prgm');">prgm</button></td>
+          <td><button id="button" type="button" onclick="display_screen('vars');">vars</button></td>
+          <td><button id="button" type="button" onclick="clear_input()">clear</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="input('^'); input('(-1)');">^-1</button></td>
+          <td><button id="button" type="button" onclick="input('sin'); input('(');">sin</button></td>
+          <td><button id="button" type="button" onclick="input('cos'); input('(')">cos</button></td>
+          <td><button id="button" type="button" onclick="input('tan'); input('(')">tan</button></td>
+          <td><button id="button" type="button" onclick="input('^')">^</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="input('^'); input(2)">^2</button></td>
+          <td><button id="button" type="button" onclick="input(',')">,</button></td>
+          <td><button id="button" type="button" onclick="input('(')">(</button></td>
+          <td><button id="button" type="button" onclick="input(')')">)</button></td>
+          <td><button id="right_button" type="button" onclick="input('/')">/</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="input('log10(')">log</button></td>
+          <td><button id="num" style="border-top-left-radius: 1.75vh" type="button" onclick="input('7')">7</button></td>
+          <td><button id="num" type="button" onclick="input('8')">8</button></td>
+          <td><button id="num" style="border-top-right-radius: 1.75vh"type="button" onclick="input('9')">9</button></td>
+          <td><button id="right_button" type="button" onclick="input('*')">*</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="input('log(')">ln</button></td>
+          <td><button id="num" type="button" onclick="input('4')">4</button></td>
+          <td><button id="num" type="button" onclick="input('5')">5</button></td>
+          <td><button id="num" type="button" onclick="input('6')">6</button></td>
+          <td><button id="right_button" type="button" onclick="input('-')">-</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="input('->')">sto&#8658;</button></td>
+          <td><button id="num" type="button" onclick="input('1')">1</button></td>
+          <td><button id="num" type="button" onclick="input('2')">2</button></td>
+          <td><button id="num" type="button" onclick="input('3')">3</button></td>
+          <td><button id="right_button" type="button" onclick="input('+')">+</button></td>
+        </tr>
+          <td><button id="button" type="button" onclick="turnon()">on</button></td>
+          <td><button id="num" type="button" onclick="input('0')">0</button></td>
+          <td><button id="num" type="button" onclick="input('.')">.</button></td>
+          <td><button id="num" type="button" onclick="input('-')">(-)</button></td>
+          <td><button id="right_button" type="button" onclick="enter_return();">enter</button></td>
+        </tr>
+      </table>
+
+      <table id="second">
+        <tr>
+          <td><button id="top_button" style="border-top-left-radius: 1.75vh;border-bottom-left-radius: 1.75vh" type="button" onclick="display_screen('st plot')">st plot</button></td>
+          <td><button id="top_button" type="button" onclick="reset_ind_tbl();display_tblset();return_default_buttons();">tblset</button></td>
+          <td><button id="top_button" type="button" onclick="display_screen('format');">format</button></td>
+          <td><button id="top_button" type="button" onclick="display_screen('calc')">calc</button></td>
+          <td><button id="top_button" style="border-top-right-radius: 1.75vh;border-bottom-right-radius: 1.75vh" type="button" onclick="reset_ind_tbl();display_table();toggle_2nd();">table</button></td>
+        </tr>
+        <tr>
+          <td><button id="snd_button" type="button" onclick="toggle_2nd();">2nd</button></td>
+          <td><button id="button" type="button" onclick="display_main_screen();return_default_buttons();set_mode('main');">quit</button></td>
+          <td><button id="button" type="button" onclick="toggle_ins();return_default_buttons();">ins</button></td>
+          <td><button id="up_arrow_button" type="button" onclick="increase_screen_opacity();">+</button></td>
+          <td><button id="right_arrow_button" type="button" onclick=""></button></td>
+        </tr>
+        <tr>
+          <td><button id="alpha_button" type="button" onclick="alpha_lock();">A-lck</button></td>
+          <td><button id="button" type="button" onclick="display_screen('link');">link</button></td>
+          <td><button id="button" type="button" onclick="display_screen('list')">list</button></td>
+          <td><button id="left_arrow_button" type="button" onclick=""></button></td>
+          <td><button id="down_arrow_button" type="button" onclick="decrease_screen_opacity();">-</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="display_screen('test')">test</button></td>
+          <td><button id="button" type="button" onclick="display_screen('angle')">angle</button></td>
+          <td><button id="button" type="button" onclick="display_screen('draw')">draw</button></td>
+          <td><button id="button" type="button" onclick="display_screen('distr')">distr</button></td>
+          <td><button id="button" type="button" onclick="clear_input();">clear</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="display_screen('matrix')">matrix</button></td>
+          <td><button id="button" type="button" onclick="input('sin^-1');input('(')">sin-1</button></td>
+          <td><button id="button" type="button" onclick="input('cos^-1');input('(')">cos-1</button></td>
+          <td><button id="button" type="button" onclick="input('tan^-1');input('(')">tan-1</button></td>
+          <td><button id="button" type="button" onclick="input('pi')">&#120703;</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="input('&#8730;');input('(');">&#8730;</button></td>
+          <td><button id="button" type="button" onclick="input('e+')">EE</button></td>
+          <td><button id="button" type="button" onclick="input('{')">{</button></td>
+          <td><button id="button" type="button" onclick="input('}')">}</button></td>
+          <td><button id="right_button" type="button" onclick="input('e')">e</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="input('10');input('^');">10^</button></td>
+          <td><button id="num_2nd" style="border-top-left-radius: 1.75vh" type="button" onclick="input('u')">u</button></td>
+          <td><button id="num_2nd" type="button" onclick="input('v')">v</button></td>
+          <td><button id="num_2nd" style="border-top-right-radius:1.75vh"type="button" onclick="input('w')">w</button></td>
+          <td><button id="right_button" type="button" onclick="input('[')">[</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="input('e');input('^');">e^</button></td>
+          <td><button id="num_2nd" type="button" onclick="input('L4')">L4</button></td>
+          <td><button id="num_2nd" type="button" onclick="input('L5')">L5</button></td>
+          <td><button id="num_2nd" type="button" onclick="input('L6')">L6</button></td>
+          <td><button id="right_button" type="button" onclick="input(']')">]</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="">rcl</button></td>
+          <td><button id="num_2nd" type="button" onclick="input('L1')">L1</button></td>
+          <td><button id="num_2nd" type="button" onclick="input('L2')">L2</button></td>
+          <td><button id="num_2nd" type="button" onclick="input('L3')">L3</button></td>
+          <td><button id="right_button" type="button" onclick="display_screen('mem')">mem</button></td>
+        </tr>
+          <td><button id="button" type="button" onclick="turnoff()">off</button></td>
+          <td><button id="num_2nd" type="button" onclick="display_screen('catalog')">ctlog</button></td>
+          <td><button id="num_2nd" type="button" onclick="input('i')">i</button></td>
+          <td><button id="num_2nd" type="button" onclick="input('Ans')">ans</button></td>
+          <td><button id="right_button" type="button" onclick="">entry</button></td>
+        </tr>
+      </table>
+
+      <table id="alpha">
+        <tr>
+          <td><button id="top_button" style="border-top-left-radius: 1.75vh;border-bottom-left-radius: 1.75vh" type="button" onclick="alpha_return();">f1</button></td>
+          <td><button id="top_button" type="button" onclick="alpha_return();">f2</button></td>
+          <td><button id="top_button" type="button" onclick="alpha_return();">f3</button></td>
+          <td><button id="top_button" type="button" onclick="alpha_return();">f4</button></td>
+          <td><button id="top_button" style="border-top-right-radius: 1.75vh;border-bottom-right-radius: 1.75vh" type="button" onclick="alpha_return();">f5</button></td>
+        </tr>
+        <tr>
+          <td><button id="snd_button" type="button" onclick="alpha_return();toggle_2nd()">2nd</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();"></button></td>
+          <td><button id="button" type="button" onclick="alpha_return();"></button></td>
+          <td><button id="up_arrow_button" type="button" onclick="alpha_return();"></button></td>
+          <td><button id="right_arrow_button" type="button" onclick="alpha_return();"></button></td>
+        </tr>
+        <tr>
+          <td><button id="alpha_button" type="button" onclick="alpha_return();toggle_alpha()">alpha</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();"></button></td>
+          <td><button id="button" type="button" onclick="alpha_return();"></button></td>
+          <td><button id="left_arrow_button" type="button" onclick="alpha_return();"></button></td>
+          <td><button id="down_arrow_button" type="button" onclick="alpha_return();"></button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="alpha_return();input('A')">A</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input('B')">B</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input('C')">C</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input(',')">,</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();clear_input()">clear</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="alpha_return();input('D')">D</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input('E')">E</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input('F')">F</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input('G')">G</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input('H')">H</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="alpha_return();input('I')">I</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input('J')">J</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input('K')">K</button></td>
+          <td><button id="button" type="button" onclick="alpha_return();input('L')">L</button></td>
+          <td><button id="right_button" type="button" onclick="alpha_return();input('M')">M</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="alpha_return();input('N')">N</button></td>
+          <td><button id="num_2nd" style="border-top-left-radius: 1.75vh" type="button" onclick="alpha_return();input('O')">O</button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input('P')">P</button></td>
+          <td><button id="num_2nd" style="border-top-right-radius: 1.75vh"type="button" onclick="alpha_return();input('Q')">Q</button></td>
+          <td><button id="right_button" type="button" onclick="alpha_return();input('R')">R</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="alpha_return();input('S')">S</button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input('T')">T</button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input('U')">U</button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input('V')">V</button></td>
+          <td><button id="right_button" type="button" onclick="alpha_return();input('W')">W</button></td>
+        </tr>
+        <tr>
+          <td><button id="button" type="button" onclick="alpha_return();input('X')">X</button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input('Y')">Y</button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input('Z')">Z</button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input(0)">0</button></td>
+          <td><button id="right_button" type="button" onclick="alpha_return();input('&#34;')">"</button></td>
+        </tr>
+          <td><button id="button" type="button" onclick="alpha_return();turnon()"></button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input(' ')">_</button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input(':')">:</button></td>
+          <td><button id="num_2nd" type="button" onclick="alpha_return();input('?')">?</button></td>
+          <td><button id="right_button" type="button" onclick="alpha_return();">solve</button></td>
+        </tr>
+      </table>
+
+
+      <div id="bottom_ti_text">
+        &nbsp;calcproject.com
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+  <footer id="footer">John Farrell<br>jsfarrell12@gmail.com</footer>
+  <div id="background--id" class="background"></div>
+
+  <script>
+    // num pads original display
+    document.getElementById("default").style.display = 'table';
+    document.getElementById("alpha").style.display = 'none';
+    document.getElementById("second").style.display = 'none';
+    // screens original display
+    for(var i = 0; i < document.getElementsByClassName("screen").length; i++)
+    {
+      document.getElementsByClassName("screen")[i].style.display = "none";
+    }
+    document.getElementById("main--screen").style.display = "block";
+    if(hasData())
+    {
+      useData();
+    }
+    saveData();
+    update_clock();
+    load_animation();
+
+    // implement degree mode
+    implementTrig();
+
+  </script>
+</html>
+

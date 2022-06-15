@@ -1,0 +1,355 @@
+body {
+    background-size: auto;
+
+    /*disable highlight text */
+    user-select: none;
+    /* For Chrome and Opera */
+    -ms-user-select: none;
+    /* For Internet Edge and Explorer*/
+    -webkit-user-select: none;
+    /* For Safari */
+    -moz-user-select: none;
+    /* For Firefox */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+
+}
+
+#data {
+    opacity: 0;
+    transition: all 250ms ease-in;
+    position: absolute;
+    font-family: "Texas Instruments TI-84 series Regular";
+    font-size: 1.5vh;
+    color: rgba(108, 100, 100, 0.787);
+}
+
+#game {
+    background-color: #41546ec6;
+    font-size: 2vh;
+    color: rgba(238, 238, 238, 0.787);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 3vh;
+    width: 95%;
+    height: 5vh;
+    margin-top: 1vh;
+    text-align: center;
+    filter: drop-shadow(0px 5px 8px rgb(0 0 0 / 5));
+    transition: all 250ms ease-in;
+}
+
+#calc_background {
+    background: linear-gradient(to top, #0091da00 63%, #000000 30%);
+    background-color: #0091da;
+    border-color: #005c8a;
+    border-style: solid;
+    border-width: 1vh;
+    border-top: 0px;
+    padding: 3.5vh;
+    padding-top: 0px;
+    border-radius: 5vh;
+    width: 31vh;
+    height: 80.5vh;
+    padding-bottom: 0px;
+    filter: drop-shadow(0px 5px 8px rgb(0 0 0 / 1));
+    transition: all 250ms ease-in;
+}
+
+button {
+    transition-duration: 50ms;
+    color: rgba(239, 238, 238, 0.999);
+    background-color: rgba(24, 24, 24, 0.999);
+    font-weight: bold;
+    font-size: 1.5vh;
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 3/2;
+    text-align: center;
+
+    border-radius: 20%;
+    border-width: .4vh;
+    border-left-color: #787878;
+    border-top-color: #787878;
+    border-right-color: #343434;
+    border-bottom-color: #343434;
+    cursor: pointer;
+}
+
+button:active {
+    border-left-color: #343434;
+    border-top-color: #343434;
+    border-right-color: #787878;
+    border-bottom-color: #787878;
+}
+
+#num {
+    background-color: rgba(239, 238, 238, 0.999);
+    color: rgba(24, 24, 24, 0.999);
+    font-weight: bold;
+    border-radius: 25%;
+    font-size: 2.25vh;
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 5/4;
+    text-align: center;
+}
+
+#num_2nd {
+    background-color: rgba(239, 238, 238, 0.999);
+    color: rgba(24, 24, 24, 0.999);
+    font-weight: bold;
+    border-radius: 20%;
+    font-size: 1.5vh;
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 5/4;
+    text-align: center;
+}
+
+#top_button {
+    color: rgba(24, 24, 24, 0.999);
+    background-color: rgba(203, 203, 203, 0.999);
+    margin-top: 25%;
+    margin-bottom: 25%;
+    font-weight: bold;
+    border-radius: 20%;
+    font-size: 1.2vh;
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 2;
+    text-align: center;
+    cursor: pointer;
+}
+
+#right_button {
+    color: rgba(24, 24, 24, 0.999);
+    background-color: rgba(203, 203, 203, 0.999);
+    font-weight: bold;
+    border-radius: 20%;
+    font-size: 1.5vh;
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 3/2;
+    text-align: center;
+    cursor: pointer;
+}
+
+#paint-palette-id {
+    opacity: 0.25;
+    filter: alpha(opacity=25);
+    position: absolute;
+    float: right;
+    z-index: 99;
+    width: 5vh;
+    right: 1vh;
+    top: 1vh;
+    transition-duration: 200ms;
+}
+
+#paint-palette-id:hover {
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+}
+
+#paint-palette-id:active {
+    opacity: 0.95;
+    filter: alpha(opacity=95);
+}
+
+#colorchangeid:hover {
+    filter: drop-shadow(0px 2px 8px rgb(0 0 0 / 1));
+}
+
+
+#darkmode--label--id:hover {
+    filter: drop-shadow(0px 2px 8px rgb(0 0 0 / 1));
+}
+
+#button:hover,
+#right_button:hover,
+#top_button:hover,
+#num_2nd:hover,
+#snd_button:hover,
+#up_arrow_button:hover,
+#down_arrow_button:hover,
+#left_arrow_button:hover,
+#num:hover,
+#alpha_button:hover,
+#right_arrow_button:hover {
+    background-color: rgba(92, 92, 92, 0.516) !important;
+}
+
+#button:active,
+#right_button:active,
+#top_button:active,
+#num_2nd:active,
+#snd_button:active,
+#up_arrow_button:active,
+#down_arrow_button:active,
+#left_arrow_button:active,
+#num:active,
+#alpha_button:active,
+#right_arrow_button:active {
+    background-color: rgba(26, 26, 26, 0.727) !important;
+}
+
+#snd_button {
+    background-color: rgb(0, 168, 168);
+    font-size: 1.5vh;
+}
+
+#alpha_button {
+    background-color: rgb(0, 173, 26);
+    font-size: 1.5vh;
+}
+
+
+#graph {
+    background-color: white;
+    display: none;
+}
+
+.screen {
+    background-color: black;
+    height: 20vh;
+    width: auto;
+    padding: .7vh;
+    padding-bottom: 1.1vh;
+    font-family: "Texas Instruments TI-84 series Regular";
+    font-size: 1.44vh;
+    border-style: solid;
+    border-radius: 1vh;
+    border-width: 1.5vh;
+    border-color: rgb(39, 39, 39);
+    transition-duration: 100ms;
+    margin: auto;
+    line-height: 1.6vh;
+}
+
+@font-face {
+    font-family: 'Texas Instruments TI-84 series';
+    src: url('texas_instruments_ti84_series.woff2') format('woff2'),
+        url('texas_instruments_ti84_series.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#main--screen {
+    background-color: black;
+    font-size: 1.44vh;
+}
+
+#math--screen {
+    background-color: white;
+    font-size: 1.44vh;
+    display: none;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#top_ti_text {
+    font-weight: bold;
+    color: white;
+    font-size: 2vh;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 3%;
+
+}
+
+#bottom_ti_text {
+    padding: .4vh;
+    display: flex;
+    justify-content: center;
+    font-weight: lighter;
+    color: rgb(255, 255, 255);
+    font-size: 2vh;
+    text-align: center;
+    opacity: 0.65;
+}
+
+#up_arrow_button {
+    color: rgba(24, 24, 24, 0.999);
+    background-color: rgba(203, 203, 203, 0.999);
+    font-weight: bold;
+    border-radius: 10%;
+    font-size: 1.5vh;
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 3/2;
+    text-align: center;
+    border-top-left-radius: 75%;
+    border-bottom-right-radius: 75%;
+    cursor: pointer;
+}
+
+#right_arrow_button {
+    color: rgba(24, 24, 24, 0.999);
+    background-color: rgba(203, 203, 203, 0.999);
+    font-weight: bold;
+    border-radius: 10%;
+    font-size: 1.5vh;
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 3/2;
+    text-align: center;
+    border-top-right-radius: 75%;
+    border-bottom-left-radius: 75%;
+    cursor: pointer;
+}
+
+#left_arrow_button {
+    color: rgba(24, 24, 24, 0.999);
+    background-color: rgba(203, 203, 203, 0.999);
+    font-weight: bold;
+    border-radius: 10%;
+    font-size: 1.5vh;
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 3/2;
+    text-align: center;
+    border-bottom-left-radius: 75%;
+    border-top-right-radius: 75%;
+    cursor: pointer;
+}
+
+#down_arrow_button {
+    color: rgba(24, 24, 24, 0.999);
+    background-color: rgba(203, 203, 203, 0.999);
+    font-weight: bold;
+    border-radius: 10%;
+    font-size: 1.5vh;
+    padding: 0px;
+    width: 100%;
+    aspect-ratio: 3/2;
+    text-align: center;
+    border-top-left-radius: 75%;
+    border-bottom-right-radius: 75%;
+    cursor: pointer;
+}
+
+#default {
+    display: table;
+}
+
+#second {
+    display: none;
+}
+
+#alpha {
+    display: none;
+}
+
+#footer {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    color: #4a4a4a82;
+    font-size: 1vh;
+    text-align: right;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: -1;
+}

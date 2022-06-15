@@ -1,0 +1,216 @@
+.loading {
+    position: absolute;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #1c1e26;
+    color: white;
+    font-size: 5vh;
+    text-align: center;
+    padding-top: 45vh;
+    font-family: monospace;
+    transition: all 250ms ease-in;
+}
+
+
+
+.toggle--checkbox,
+.colorswitch--checkbox,
+.gamemode--checkbox,
+.brain--checkbox,
+.shop--checkbox {
+    display: none;
+}
+
+:root {
+    /** sunny side **/
+    --blue-background: #c2e9f6;
+    --blue-border: #72cce3;
+    --blue-color: #96dcee;
+    --yellow-background: #fffaa8;
+    --yellow-border: #eee259;
+    /** dark side **/
+    --indigo-background: #262c43;
+    --indigo-border: #5d6baa;
+    --indigo-color: #6b7abb;
+    --gray-border: #e8e8ea;
+    --gray-dots: #e8e8ea;
+    /** general **/
+    --white: #fff;
+}
+
+.shell {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.outer {
+    display: grid;
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    gap: 1vh;
+}
+
+.main--buttons {
+    padding: 2%;
+    position: relative;
+    margin: auto;
+    width: 30vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.font--buttons {
+    padding: 2%;
+    position: relative;
+    margin: auto;
+    width: auto;
+    height: 4vh;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Texas Instruments TI-84 series Regular";
+}
+
+#darkmode--label--id {
+    height: 7vh;
+    aspect-ratio: 1;
+    background-color: #eee259;
+    border-radius: 100px;
+    border: 1vh solid var(--blue-border);
+    display: flex;
+    position: relative;
+    transition: all 200ms ease-in;
+    filter: drop-shadow(0px 2px 8px rgb(0 0 0 / .5));
+    cursor: pointer;
+}
+
+.colorswitch--label {
+    height: 7vh;
+    aspect-ratio: 1;
+    background: #0091da;
+    border-radius: 100px;
+    border: 1vh solid #005c8a;
+    position: relative;
+    transition: all 200ms ease-in;
+    filter: drop-shadow(0px 2px 8px rgb(0 0 0 / .5));
+    cursor: pointer;
+}
+
+.brain--label {
+    height: 7vh;
+    aspect-ratio: 1;
+    background: #ff1ac2;
+    border-radius: 100px;
+    border: 1vh solid #894490;
+    position: relative;
+    transition: all 200ms ease-in;
+    filter: drop-shadow(0px 2px 8px rgb(0 0 0 / .5));
+    cursor: pointer;
+}
+
+.shop--label {
+    height: 7vh;
+    aspect-ratio: 1;
+    background: #4ad04c;
+    border-radius: 100px;
+    border: 1vh solid #47773a;
+    position: relative;
+    transition: all 200ms ease-in;
+    filter: drop-shadow(0px 2px 8px rgb(0 0 0 / .5));
+    cursor: pointer;
+}
+
+.gamemode--label {
+    height: 7vh;
+    aspect-ratio: 1;
+    background: #ffd700;
+    border-radius: 100px;
+    border: 1vh solid #a38b00;
+    position: relative;
+    transition: all 200ms ease-in;
+    filter: drop-shadow(0px 2px 8px rgb(0 0 0 / .5));
+    cursor: pointer;
+}
+
+#background--id {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--blue-background);
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transition: all 250ms ease-in;
+}
+
+/*.toggle--checkbox:checked ~ .colorswitch--label{
+    background: var(--indigo-color);
+    border-color: var(--indigo-border);
+  }*/
+
+
+
+
+#settingsbutton {
+    overflow: hidden;
+    height: 6vh;
+    aspect-ratio: .5;
+    background-color: #909090;
+    border-radius: 100px;
+    border: 0.7vh solid #434343;
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+    z-index: 1000;
+    transition: all 200ms ease-in;
+    filter: drop-shadow(0px 2px 8px rgb(0 0 0 / .5));
+    cursor: pointer;
+    font-family: "Texas Instruments TI-84 series Regular";
+    font-size: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#settingsshell {
+    overflow: hidden;
+    display: none;
+    opacity: 0;
+
+    transition-duration: 200ms;
+
+    padding: 3vh;
+
+    position: absolute;
+    height: auto;
+    width: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+
+    filter: drop-shadow(0px 10px 10px rgb(0 0 0 / 1));
+    background-image: linear-gradient(to bottom right, rgba(173, 173, 173, 0.972), rgba(135, 135, 135, 0.952));
+    border-radius: 10vh;
+    border: 0.7vh solid #2b2b2be1;
+
+    text-align: center;
+    font-family: "Texas Instruments TI-84 series Regular";
+    font-size: 1vh;
+}
+
+#directionsimg {
+    height: 35vh;
+    padding: 5%;
+    border-radius: 3vh;
+}

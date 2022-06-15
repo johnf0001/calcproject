@@ -1,0 +1,14 @@
+﻿/* @font-face kit by Fonts2u (https://fonts2u.com) */ 
+@font-face {
+    font-family:"Texas Instruments TI-84 series Regular";
+    src:url("texas_instruments_ti84_series.eot?") 
+    format("eot"),
+        url("texas_instruments_ti84_series.woff") 
+    format("woff"),
+        url("texas_instruments_ti84_series.ttf") 
+    format("truetype"),
+        url("texas_instruments_ti84_series.svg#Texas-Instruments-TI-84-series") 
+    format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
