@@ -2,6 +2,7 @@
 2022 AP Calculus Project
 
 Webpage: https://johnsfarrell.github.io/calcproject/
+If you're trying to connect via mobile, it won't work well with the github.io link.
 
 # sources
 
