@@ -1,19 +1,20 @@
 # calcproject
 2022 AP Calculus Project
 
-`Webpage` http://calcproject.com/
+`Webpage` http://calcproject.com/ <br>
 `Backup Page` https://johnsfarrell.github.io/calcproject/
 
 # sources
 
-Principal
-[Nerdamer's Math Library](https://nerdamer.com/)
-[Graphing Reference](https://nklein.com/math-scripts/simple-graph/)
-[Font Family](https://fonts2u.com/texas-instruments-ti-84-series-regular.font/)
-[Favicon](https://favicon.io/emoji-favicons/straight-ruler/)
+Principal <br>
+[Nerdamer's Math Library](https://nerdamer.com/) <br>
+[Graphing Reference](https://nklein.com/math-scripts/simple-graph/) <br>
+[Font Family](https://fonts2u.com/texas-instruments-ti-84-series-regular.font/) <br>
+[Favicon](https://favicon.io/emoji-favicons/straight-ruler/) <br>
 
 More References
 
+```
 Algebra.js.org. 2022. algebra.js by nicolewhite. [online] Available at: [Accessed 2 June 2022].
 Alt-codes.net. 2022. Alt Codes List of Alt Key Codes Symbols. [online] Available at: [Accessed 2 June 2022].
 Blog | Bobbyhadz. 2022. bobbyhadz. [online] Available at: [Accessed 2 June 2022].
@@ -38,6 +39,7 @@ SamanthaMing.com. 2022. SamanthaMing.com. [online] Available at: [Accessed 2 Jun
 Techie Delight. 2022. Techie Delight. [online] Available at: [Accessed 2 June 2022].
 Tutorial Kart. 2022. Tutorial Kart - Best Online Learning Site for Free Tutorials, Online Training, Courses, Materials and Interview Questions - SAP Tutorial, Salesforce Tutorial, Informatica Tutorial, Kotlin Tutorial, Kotlin Android Tutorial, Spark Tutorial, Kafka Tutorial, Node JS Tutorial. [online] Available at: [Accessed 2 June 2022].
 More Links
+```
 
 https://www.w3schools.com/html/html_basic.asp
 https://stackoverflow.com/questions/2276021/evaluating-a-string-as-a-mathematical-expression-in-javascript
