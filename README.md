@@ -1,7 +1,7 @@
 # calcproject
 2022 AP Calculus Project
 
-`Webpage` https://johnsfarrell.github.io/calcproject/
+`Webpage` http://calcproject.com/
 
 # sources
 
